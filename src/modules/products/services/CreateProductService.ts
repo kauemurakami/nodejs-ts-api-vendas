@@ -16,6 +16,9 @@ class CreateProductService {
     if (productExists) {
       throw new AppError('Já existe um produto com este nome.');
     } else {
+      if (!name || !price || !quantity) {
+        throw new AppError('Informe todos os dados para inserir um produto');
+      }
       const product = productsRepository.create({
         name,
         price,
