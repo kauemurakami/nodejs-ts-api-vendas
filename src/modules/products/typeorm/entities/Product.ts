@@ -10,9 +10,9 @@ class Product {
   price: number;
   @Column('decimal')
   quantity: number;
-  @CreateDateColumn('timestamp')
+  @CreateDateColumn()
   created_at: Date;
-  @UpdateDateColumn('timestamp')
+  @UpdateDateColumn()
   updated_at: Date;
 }
 export default Product;
