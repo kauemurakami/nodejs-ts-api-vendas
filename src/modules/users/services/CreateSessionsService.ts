@@ -1,6 +1,7 @@
 import AppError from '@shared/errors/AppError';
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
+import authConfig from '@config/auth';
 import { getCustomRepository } from 'typeorm';
 import User from '../typeorm/entities/User';
 import UsersRepository from '../typeorm/repositories/UsersRepository';
@@ -26,9 +27,9 @@ class CreateSessionsService {
       throw new AppError('Senha incorreta', 401);
     }
 
-    const token = sign({}, '9a252d99c9cfc7c3b2bba1e1a75442c6', {
+    const token = sign({}, authConfig.jwt.secret, {
       subject: user.id,
-      expiresIn: '1d',
+      expiresIn: authConfig.jwt.expiresIn,
     });
 
     return { token, user };
