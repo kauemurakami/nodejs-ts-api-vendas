@@ -11,7 +11,7 @@ interface IRequest {
   avatarFilename: string;
 }
 
-class UpdateUserService {
+class UpdateUserAvatarService {
   public async execute({ user_id, avatarFilename }: IRequest): Promise<User> {
     const userRepository = getCustomRepository(UsersRepository);
     const user = await userRepository.findById(user_id);
@@ -30,4 +30,4 @@ class UpdateUserService {
     return user;
   }
 }
-export default UpdateUserService;
+export default UpdateUserAvatarService;
