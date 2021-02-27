@@ -4,13 +4,14 @@ import { errors } from 'celebrate';
 import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
 import routes from './routes';
+import uploadConfig from '@config/upload';
 import AppError from '@shared/errors/AppError';
 import '@shared/typeorm';
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-
+app.use('/files', express.static(uploadConfig.directory));
 app.use(routes);
 //middleware de captura de erros
 app.use(errors());

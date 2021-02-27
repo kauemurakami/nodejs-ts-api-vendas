@@ -3,7 +3,7 @@ import path from 'path';
 import crypto from 'crypto';
 
 //local de armazenamento de imagens
-const uploadFolder = path.resolve(__dirname, '..', '..', '/uploads');
+const uploadFolder = path.resolve(__dirname, '..', '..', 'uploads');
 
 export default {
   directory: uploadFolder,
