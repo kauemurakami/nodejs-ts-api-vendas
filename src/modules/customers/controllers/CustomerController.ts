@@ -27,8 +27,8 @@ export default class CustomersController {
   public async update(request: Request, response: Response): Promise<Response> {
     const updateCustomerService = new UpdateCustomerService();
     const { id } = request.params;
-    const { name, email, password, old_password } = request.body;
-    const customer = await updateCustomerService.execute({ id, name, email, password, old_password });
+    const { name, email } = request.body;
+    const customer = await updateCustomerService.execute({ id, name, email });
     return response.status(200).json(customer);
     //204 tudo correu bem mas nao possui retorno
   }
@@ -37,6 +37,6 @@ export default class CustomersController {
     const { id } = request.params;
     const deleteCustomerService = new DeleteCustomerService();
     await deleteCustomerService.execute({ id });
-    return response.status(200).json({ message: 'Produto deletado' });
+    return response.status(200).json({ message: 'Cliente deletado' });
   }
 }
