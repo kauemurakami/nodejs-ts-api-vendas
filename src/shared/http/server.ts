@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import 'dotenv/config';
 import 'express-async-errors';
 import { errors } from 'celebrate';
 import { pagination } from 'typeorm-pagination';

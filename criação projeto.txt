@@ -194,3 +194,11 @@ $yarn add handlebars
 adicionando paginação typeorm-pagination
 $ yarn add typeorm-pagination
 configuração inicial no server.ts
+
+adicionando variaveis de ambiente
+adicionando dot env
+$ yarn add dotenv
+
+criar dois arquivos na raiz
+.env //configuração de ambiente local //incluir no gitnore
+.env.example // quaias sao as variaveis configuradas no .env mas sem valores
