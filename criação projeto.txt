@@ -23,20 +23,20 @@ uploads/*
 compilar de ts para js ( gerar build)
 $ yarn tsc server.ts
 
-para executar 
+para executar
 $ node build/server.js
 ###
 
 remover a pasta build
 
-### AUTOMATIZANDO 
-adicionar script no package.json para automatizar o build e hot reload 
+### AUTOMATIZANDO
+adicionar script no package.json para automatizar o build e hot reload
 "scripts": {
   "dev": "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/http/server.ts",
 }
 ###
 
-após isso para executar rodar apenas 
+após isso para executar rodar apenas
 $ yarn dev
 
 Configurando EditaroConfig
@@ -117,7 +117,7 @@ Adicionar modificações ao arquivo .eslintrc
   }
 }
 
-estrutura de pastas 
+estrutura de pastas
 src
  - shared
    - http
@@ -131,13 +131,13 @@ em seu tsconfig.json
        "@config/*":["src/config/*"],
        "@modules/*":["src/modules/*"],
        "@shared/*":["src/shared/*"],
-     }, 
+     },
 
 Adicionando restante das bibliotecas principais
 $ yarn add express cors express-async-errors
 $ yarn add -D @types/express @types/cors
 
-Instalação do TypeORM / reflect metadata /postgress 
+Instalação do TypeORM / reflect metadata /postgress
 yarn add typeorm reflect-metadata pg
 
 Criando container docker
@@ -166,7 +166,7 @@ $ yarn add -D @types/bcryptjs
 
 await hash(password, N); sendo N = salt de hash
 
-Criando autenticação de sessão do usuario com 
+Criando autenticação de sessão do usuario com
 Json Web Token (JWT)
 $ yarn add jsonwebtoken
 $ yarn add -D @types/jsonwebtoken
@@ -175,7 +175,7 @@ processo de upload de arquivos (imagem)
 usando lib Multer
 $yarn add multer
 $yarn add -D @types/multer
- criar pasta upload /configs/upload.ts 
+ criar pasta upload /configs/upload.ts
 
 adicionando biblioteca date-fns para comparação e manipulação de horas /datas
 $ yarn add date-fns
@@ -190,3 +190,7 @@ $yarn add -D @types/nodemailer
 handlebars para template de email
 https://handlebarsjs.com/
 $yarn add handlebars
+
+adicionando paginação typeorm-pagination
+$ yarn add typeorm-pagination
+configuração inicial no server.ts
