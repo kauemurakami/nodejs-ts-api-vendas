@@ -203,6 +203,6 @@ $ yarn add dotenv
 .env //configuração de ambiente local //incluir no gitnore
 .env.example // quaias sao as variaveis configuradas no .env mas sem valores
 
-###implementando class transformer para ocultar propriedades que nao gostariamos de retornar
+### implementando class transformer para ocultar propriedades que nao gostariamos de retornar
 $ yarn add class-transformer
 
