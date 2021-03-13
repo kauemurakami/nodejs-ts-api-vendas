@@ -2,7 +2,7 @@ import CustomersRepository from '@modules/customers/typeorm/repositories/Custome
 import { ProductRepository } from '@modules/products/typeorm/repositories/ProductsRepository';
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
-import Order from '../typeorm/entities/Orders';
+import Order from '../typeorm/entities/Order';
 import OrdersRepository from '../typeorm/repositories/OrdersRepository';
 
 interface IProduct {

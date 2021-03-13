@@ -24,7 +24,7 @@ ordersRouter.post(
       products: Joi.array().required(),
     },
   }),
-  controller.createOrder,
+  controller.create,
 );
 
 export default ordersRouter;
