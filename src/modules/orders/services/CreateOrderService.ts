@@ -7,7 +7,6 @@ import OrdersRepository from '../typeorm/repositories/OrdersRepository';
 
 interface IProduct {
   id: string;
-  price: number;
   quantity: number;
 }
 
@@ -23,29 +22,34 @@ class CreateOrderService {
     const productsRepository = getCustomRepository(ProductRepository);
 
     const customerExists = await customersRepository.findById(customer_id);
+
     if (!customerExists) {
-      throw new AppError('Usuário não encontrado');
+      throw new AppError('Could not find any customer with the given id.');
     }
 
     const existsProducts = await productsRepository.findAllByIds(products);
+
     if (!existsProducts.length) {
-      throw new AppError('Nenhum produto encontrado');
-    }
-    //produtos que existem
-    const existsProductsId = existsProducts.map(product => product.id);
-
-    //ids que nao existem
-    const checkInexistente = products.filter(product => !existsProductsId.includes(product.id));
-    if (existsProductsId.length) {
-      throw new AppError(`Estes produtos não existem ${checkInexistente[0].id}`);
+      throw new AppError('Could not find any products with the given ids.');
     }
 
-    //verifica se a quantidade esta disponível ( nao vender mais do que se que tem em estoque)
+    const existsProductsIds = existsProducts.map(product => product.id);
+
+    const checkInexistentProducts = products.filter(product => !existsProductsIds.includes(product.id));
+
+    if (checkInexistentProducts.length) {
+      throw new AppError(`Could not find product ${checkInexistentProducts[0].id}.`);
+    }
+
     const quantityAvailable = products.filter(
       product => existsProducts.filter(p => p.id === product.id)[0].quantity < product.quantity,
     );
+
     if (quantityAvailable.length) {
-      throw new AppError(`Quantidade excedida ${quantityAvailable[0].quantity} para ${quantityAvailable[0].id}`);
+      throw new AppError(
+        `The quantity ${quantityAvailable[0].quantity}
+         is not available for ${quantityAvailable[0].id}.`,
+      );
     }
 
     const serializedProducts = products.map(product => ({
@@ -60,9 +64,10 @@ class CreateOrderService {
     });
 
     const { order_products } = order;
+
     const updatedProductQuantity = order_products.map(product => ({
-      id: product.id,
-      quantity: existsProducts.filter(p => p.id === product.id)[0].quantity - product.quantity,
+      id: product.product_id,
+      quantity: existsProducts.filter(p => p.id === product.product_id)[0].quantity - product.quantity,
     }));
 
     await productsRepository.save(updatedProductQuantity);
@@ -70,4 +75,5 @@ class CreateOrderService {
     return order;
   }
 }
+
 export default CreateOrderService;
