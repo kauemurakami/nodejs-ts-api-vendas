@@ -8,10 +8,15 @@ class ListProductsService {
     const productsRepository = getCustomRepository(ProductRepository);
 
     const redisCache = new RedisCache();
+    //verifica se há esta cahve
+    let products = await redisCache.recover<Product[]>('api-vendas_PRODUCT-LIST');
+    //caso nao exista vamos ao banco de dados
+    if (!products) {
+      products = await productsRepository.find();
+      //criamos o cache caso nao exista, e após buscado criamos ele
+      await redisCache.save('api-vendas_PRODUCT-LIST', products);
+    }
 
-    const products = productsRepository.find();
-
-    await redisCache.save('teste', 'teste');
     return products;
   }
 }

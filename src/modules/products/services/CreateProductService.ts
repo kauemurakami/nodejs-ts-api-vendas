@@ -2,6 +2,7 @@ import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
 import Product from '../typeorm/entities/Product';
 import { ProductRepository } from '../typeorm/repositories/ProductsRepository';
+import RedisCache from '@shared/cache/RedisCache';
 
 interface IRequest {
   name: string;
@@ -19,11 +20,13 @@ class CreateProductService {
       if (!name || !price || !quantity) {
         throw new AppError('Informe todos os dados para inserir um produto');
       }
+      const redisCache = new RedisCache();
       const product = productsRepository.create({
         name,
         price,
         quantity,
       });
+      await redisCache.invalidate('api-vendas_PRODUCT-LIST');
       await productsRepository.save(product);
       return product;
     }
