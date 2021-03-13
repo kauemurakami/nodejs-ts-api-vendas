@@ -206,3 +206,36 @@ $ yarn add dotenv
 ### implementando class transformer para ocultar propriedades que nao gostariamos de retornar
 $ yarn add class-transformer
 
+### implementando cache com redis
+adicionando variáveis de ambiente do redis no nosso arquivo .env
+REDIS_HOST = localhost
+REDIS_PORT = 6379
+REDIS_PASS =
+
+SUBIR CONTAINER PARA O REDIS
+$ docker run --name redis -p 6379:6379 -d -t redis:alpine
+$ yarn add redis ioredis
+$ yarn add @types/redis @types/ioredis -D
+
+### criar arquivo cache.ts em config
+import { RedisOptions } from 'ioredis';
+
+interface ICacheConfig {
+  driver: string;
+  config: {
+    redis: RedisOptions;
+  };
+}
+
+export default {
+  driver: 'redis',
+  config: {
+    redis: {
+      host: process.env.REDIS_HOST,
+      port: process.env.REDIS_PORT,
+      password: process.env.REDIS_PASS || undefined,
+    },
+  },
+} as ICacheConfig;
+
+
