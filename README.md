@@ -181,22 +181,22 @@ $yarn add -D @types/multer
 $ yarn add date-fns
 
 https://ethereal.mail
-###Adicionando Ethereal para fake smtp service email
+### Adicionando Ethereal para fake smtp service email
 (NODEMAILER o mais usado em node)
-###envio de email atraves de NODEMAILER mas o email é enviado para o site do Ethereal, um email fake, que criaremos.
+### envio de email atraves de NODEMAILER mas o email é enviado para o site do Ethereal, um email fake, que criaremos.
 $yarn add nodemailer
 $yarn add -D @types/nodemailer
 
-###handlebars para template de email
+### handlebars para template de email
 https://handlebarsjs.com/
 $yarn add handlebars
 
-###adicionando paginação typeorm-pagination
+### adicionando paginação typeorm-pagination
 $ yarn add typeorm-pagination
 configuração inicial no server.ts
 
-###adicionando variaveis de ambiente
-###adicionando dot env
+### adicionando variaveis de ambiente
+### adicionando dot env
 $ yarn add dotenv
 
 ### criar dois arquivos na raiz
