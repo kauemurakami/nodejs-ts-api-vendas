@@ -39,12 +39,12 @@ adicionar script no package.json para automatizar o build e hot reload
 após isso para executar rodar apenas
 $ yarn dev
 
-###Configurando EditaroConfig
+### Configurando EditaroConfig
 Adicionando .editor config ( clickar com botao direito na pasta reiz do projeto e selecionar genereted .editorconfig
 
-###Configurando ESLint
+### Configurando ESLint
 yarn add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
-###criar arquivo .eslintrc com o seguinte conteúdo.
+### criar arquivo .eslintrc com o seguinte conteúdo.
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
@@ -61,14 +61,14 @@ yarn add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
   }
 }
 
-###criar arquivo .eslintignore
+### criar arquivo .eslintignore
 node_modules
 dist
 build
 /*.js
 
 
-###Adicionar um script no arquivo package.json para executar o lint:
+### Adicionar um script no arquivo package.json para executar o lint:
 
 "scripts": {
   "test": "echo \"Error: no test specified\" &amp;&amp; exit 1",
@@ -77,13 +77,13 @@ build
   "lint-fix": "eslint . --ext .ts --fix"
 }
 
-###para executar
+### para executar
 $ yarn lint ou $ yarn lint-fix
 
-###Configurando Prettier
+### Configurando Prettier
 $ yarn add prettier -D
 
-###Criar arquivo .prettierrc
+### Criar arquivo .prettierrc
 {
   "semi": true,
   "trailingComma": "all",
@@ -92,10 +92,10 @@ $ yarn add prettier -D
   "arrowParens": "avoid"
 }
 
-###Configurando prettier com eslint
+### Configurando prettier com eslint
 $ yarn add eslint-config-prettier eslint-plugin-prettier -D
 
-###Adicionar modificações ao arquivo .eslintrc
+### Adicionar modificações ao arquivo .eslintrc
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
@@ -117,7 +117,7 @@ $ yarn add eslint-config-prettier eslint-plugin-prettier -D
   }
 }
 
-###estrutura de pastas
+### estrutura de pastas
 src
  - shared
    - http
@@ -125,7 +125,7 @@ src
  - config
  - modules
 
-###Melhorando importações, criando uma base para cada path
+### Melhorando importações, criando uma base para cada path
 em seu tsconfig.json
      "paths": {
        "@config/*":["src/config/*"],
@@ -133,18 +133,18 @@ em seu tsconfig.json
        "@shared/*":["src/shared/*"],
      },
 
-###Adicionando restante das bibliotecas principais
+### Adicionando restante das bibliotecas principais
 $ yarn add express cors express-async-errors
 $ yarn add -D @types/express @types/cors
 
-###Instalação do TypeORM / reflect metadata /postgress
+### Instalação do TypeORM / reflect metadata /postgress
 yarn add typeorm reflect-metadata pg
 
-###Criando container docker
+### Criando container docker
 
 docker run --name postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
 
-###criando migration de products
+### criando migration de products
 $ yarn typeorm migration:create -n CreateProducts
 
 add extensão uuid_ossl a base de dados nos respectivo banco de dados para gerenciamento do uuid_generete_v4().
@@ -159,25 +159,25 @@ e corrigindo erro AppErrors
 $ yarn add celebrate
 $ yarn add -D @types/joi
 
-###instalando bcrypt para criptografar senhas ao enviar para o banco
+### instalando bcrypt para criptografar senhas ao enviar para o banco
 $ yarn add bcryptjs
-###instalar tipagem dela
+### instalar tipagem dela
 $ yarn add -D @types/bcryptjs
 
 await hash(password, N); sendo N = salt de hash
 
-###Criando autenticação de sessão do usuario com
+### Criando autenticação de sessão do usuario com
 Json Web Token (JWT)
 $ yarn add jsonwebtoken
 $ yarn add -D @types/jsonwebtoken
 
-###processo de upload de arquivos (imagem)
-###usando lib Multer
+### processo de upload de arquivos (imagem)
+### usando lib Multer
 $yarn add multer
 $yarn add -D @types/multer
- ###criar pasta upload /configs/upload.ts
+ ### criar pasta upload /configs/upload.ts
 
-###adicionando biblioteca date-fns para comparação e manipulação de horas /datas
+### adicionando biblioteca date-fns para comparação e manipulação de horas /datas
 $ yarn add date-fns
 
 https://ethereal.mail
@@ -199,7 +199,7 @@ configuração inicial no server.ts
 ###adicionando dot env
 $ yarn add dotenv
 
-###criar dois arquivos na raiz
+### criar dois arquivos na raiz
 .env //configuração de ambiente local //incluir no gitnore
 .env.example // quaias sao as variaveis configuradas no .env mas sem valores
 
