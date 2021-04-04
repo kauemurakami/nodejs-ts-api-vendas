@@ -238,4 +238,12 @@ export default {
   },
 } as ICacheConfig;
 
+### Anti DDoS
+implementando rate limiter flexible para limitar o numero de requisições recebidas / protege contra DDoS.
+Armazenaremos o ip da requisição e definiremos um limite de chamadas por tempo
+$yarn add rate-limiter-flexible
+
+funcionará como um middleware, todas as requisições passaráo por ela.
+assim conseguindo gravar o ip no redis e quantas requisições por segundo fooram feitas
+//para teste coloque points: 1 e faça requisições por umn cliente http
 

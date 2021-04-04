@@ -9,10 +9,13 @@ import routes from './routes';
 import uploadConfig from '@config/upload';
 import AppError from '@shared/errors/AppError';
 import '@shared/typeorm';
+import rateLimiter from '@shared/http/middlewares/rate_limiter';
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+//middleware limiter/anti DDoS antes de qualquer rorta e qualqeur requisição
+app.use(rateLimiter);
 app.use(pagination);
 app.use('/files', express.static(uploadConfig.directory));
 app.use(routes);
