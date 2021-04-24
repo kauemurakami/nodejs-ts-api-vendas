@@ -247,3 +247,4 @@ funcionará como um middleware, todas as requisições passaráo por ela.
 assim conseguindo gravar o ip no redis e quantas requisições por segundo fooram feitas
 //para teste coloque points: 1 e faça requisições por umn cliente http
 
+
